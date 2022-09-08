@@ -1,10 +1,14 @@
 import React from "react";
 import ColorOptions from "../ExtraBits/ColorOptions";
+import SelectFull from "../ExtraBits/SelectFull";
+
+
+let behaviourListExample = ['Default','Independant','Fixed']
 
 const PageChangerBasics = (props) => {
 
     return (
-        <form>
+        <React.Fragment>
             <label>
                 Background Colour {props.title}
             </label>
@@ -13,7 +17,11 @@ const PageChangerBasics = (props) => {
                 Text Colour
             </label>
             <ColorOptions valueToChange={props.textChange} changeMaker={props.Changer}/>
-        </form>
+            <label>
+                Behaviour
+            </label>
+            <SelectFull listOfOptions={behaviourListExample}/>
+        </React.Fragment>
     )
 }
 

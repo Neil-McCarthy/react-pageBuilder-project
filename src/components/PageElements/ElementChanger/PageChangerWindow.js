@@ -5,7 +5,7 @@ import PageChangerSettings from "./PageChangerSettings";
 
 const PageChangerWindow = (props) => {
 
-    const [elementDisplayed, elementSelect] = useState('header');
+    const [elementDisplayed, elementSelect] = useState('body');
     function testy(thisThing) {
         console.log(thisThing);
     }
@@ -18,6 +18,9 @@ const PageChangerWindow = (props) => {
                     Page Constructor
                 </h1>
                 <ul>
+                    <li onClick={() => {elementSelect('body')}}>
+                        Body
+                    </li>
                     <li onClick={() => {elementSelect('header')}}>
                         Header
                     </li>
@@ -34,7 +37,7 @@ const PageChangerWindow = (props) => {
                         Footer
                     </li>
                 </ul>
-                <PageChangerSettings changeColorFunction={props.changeColorFunction} elementSelected={elementDisplayed} close={props.close} thingy={testy} />
+                <PageChangerSettings changeColorFunction={props.changeColorFunction} elementSelected={elementDisplayed} close={props.close} thingy={testy} sectionAdder={props.sectionAdder} />
             </section>
         </div>
     )

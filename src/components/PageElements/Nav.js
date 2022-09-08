@@ -1,23 +1,14 @@
 import React from "react";
-import List from "./List";
+import ListFull from "./ExtraBits/ListFull";
+
 
 const Nav = (props) => {
 
-    const listList = [];
-
-
-
-    for (let index = 0;index < props.listOfOptions.length;index++) {
-        listList.push(<List listValue={props.listOfOptions[index]} key={index} />);
-    }
-
     return (
-        <nav style={{background:props.backgroundColor, color:props.textColor}}>
-            <ul>
-                {listList}
-            </ul>
-        </nav>
-    )
+    <nav style={{background:props.backgroundColor, color:props.textColor}}>
+        <ListFull listOfOptions={props.listOfOptions} />
+    </nav>
+    );
 }
 
 export default Nav;

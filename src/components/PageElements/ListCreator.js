@@ -1,5 +1,5 @@
 import React from "react";
-import List from "./List";
+import ListItem from "./ExtraBits/ListItem";
 
 
 
@@ -11,7 +11,7 @@ const ListCreator = (props) => {
 
 
     for (let index = 0;index < props.ListToCreate.length;index++) {
-        listList.push(<List listValue={props.ListToCreate[index]} key={index} />);
+        listList.push(<ListItem listValue={props.ListToCreate[index]} key={index} />);
     }
     // const ListToCreate = props.ListToCreate;
     // let keyValue = 0;

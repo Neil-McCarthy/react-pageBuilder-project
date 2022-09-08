@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import Header from './components/PageElements/Header';
+import Header from './components/PageElements/Header/Header';
 import classes from './components/PageElements/GeneralStyles.module.css';
 import Nav from './components/PageElements/Nav';
-import Main from './components/PageElements/Main';
+import Main from './components/PageElements/Main/Main';
 import Aside from './components/PageElements/Aside';
 import Footer from './components/PageElements/Footer';
 import PageChangerWindow from './components/PageElements/ElementChanger/PageChangerWindow';
@@ -12,11 +12,13 @@ let navArray = ["this","that","these","and","those"];
 let testArray = ["blingus","dingus","fingus","ringus","slingus","gingus","mingus","ningus","wingus","pingus","kingus"]
 let sectionList = ["Header","Paragraph","Image","Header 2","Paragraph 2","Image","Another Header","Another paragraph","img","Another paragraph","img","Another paragraph","bingus","img"]
 
+
 function App() {
 
   const [headerContent, headerChanger] = useState("hello");
   const [listContent, listChanger] = useState(navArray);
   const [popUp, popUpChanger] = useState('');
+  const [mainSectionOutput, mainSectionUpdate] = useState(sectionList);
 
   //ELEMENT COLOURS>>>
   const [headerBackgroundColor, headerBackgroundColorChange] = useState('tan');
@@ -30,6 +32,17 @@ function App() {
   const [footerBackgroundColor, footerBackgroundColorChanger] = useState('tan');
   const [footerTextColor, footerTextColorChange] = useState('');
   //ELEMENT COLOURS<<<
+
+
+
+  function sectionAdder(selectedElement, numberToAdd) {
+    if(selectedElement === 'main') {
+      for (let addedSection=0;addedSection < numberToAdd;addedSection++) {
+        sectionList.push("Header","Paragraph","Img");
+      }
+      mainSectionUpdate(sectionList);
+    }
+  }
 
   const colorChanger = (element,newBackgroundColor,newTextColor) => {
     if (element === 'header') {
@@ -55,6 +68,7 @@ function App() {
       footerTextColorChange(newTextColor);
     }
   }
+
   const changeHandler = () => {
     headerChanger('new thing');
     listChanger(testArray);
@@ -69,14 +83,15 @@ function App() {
     popUpChanger('');
   }
 
+
   return (
     <div onClick={changeHandler} className={classes.parentDiv}>
-      {popUp && <PageChangerWindow changeColorFunction={colorChanger} close={closeWindow} />}
       <Header backgroundColor={headerBackgroundColor} textColor={headerTextColor} heading={headerContent} id='header' />
-      <Nav backgroundColor={navBackgroundColor} textColor={navTextColor} listOfOptions={listContent}/>
-      <Main backgroundColor={mainBackgroundColor} textColor={mainTextColor} sectionsToCreate={sectionList} />
-      <Aside backgroundColor={asideBackgroundColor} textColor={asideTextColor} heading='Heading'/>
-      <Footer backgroundColor={footerBackgroundColor} textColor={footerTextColor} />
+      <Nav class='mainElement' backgroundColor={navBackgroundColor} textColor={navTextColor} listOfOptions={listContent}/>
+      <Main class='mainElement' backgroundColor={mainBackgroundColor} textColor={mainTextColor} sectionsToCreate={mainSectionOutput} />
+      <Aside class='mainElement' backgroundColor={asideBackgroundColor} textColor={asideTextColor} heading='Heading'/>
+      <Footer class='mainElement' backgroundColor={footerBackgroundColor} textColor={footerTextColor} />
+      {popUp && <PageChangerWindow changeColorFunction={colorChanger} close={closeWindow} sectionAdder={sectionAdder} />}
     </div>
   );
 }
