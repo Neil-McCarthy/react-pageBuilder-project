@@ -8,14 +8,14 @@ import Footer from './components/PageElements/Footer';
 import PageChangerWindow from './components/PageElements/ElementChanger/PageChangerWindow';
 
 
-let navArray = ["this","that","these","and","those"];
+let navArray = ["List 1","List 2","List 3","List 4","List 5"];
 let testArray = ["blingus","dingus","fingus","ringus","slingus","gingus","mingus","ningus","wingus","pingus","kingus"]
-let sectionList = ["Header","Paragraph","Image","Header 2","Paragraph 2","Image","Another Header","Another paragraph","img","Another paragraph","img","Another paragraph","bingus","img"]
+let sectionList = ["Header 1","Paragraph","Image","Header 2","Paragraph","Image","Header 3","Paragraph","img","Header 4","Paragraph","img","Header 5","Paragraph","img"]
 
 
 function App() {
 
-  const [headerContent, headerChanger] = useState("hello");
+  const [headerContent, headerChanger] = useState("Webpage Builder");
   const [listContent, listChanger] = useState(navArray);
   const [popUp, popUpChanger] = useState('');
   const [mainSectionOutput, mainSectionUpdate] = useState(sectionList);
